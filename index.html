@@ -2,186 +2,323 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>14 Days of Our Love 🌊💙</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+    <title>14 Magical Days for My Queen 👑</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Dancing+Script&display=swap" rel="stylesheet">
     <style>
         :root {
-            --teal-primary: #2CD4D9;    /* Vibrant teal */
-            --teal-secondary: #2A9D8F;  /* Deep teal */
-            --teal-dark: #264653;       /* Dark accent */
-            --teal-light: #E8F7F7;      /* Light background */
+            --teal: #2CD4D9;
+            --rose-gold: #E0BFB8;
+            --choco: #6B4423;
         }
 
         body {
-            margin: 0;
-            background: linear-gradient(45deg, 
-                var(--teal-light) 0%, 
-                rgba(42, 157, 143, 0.1) 100%
-            );
-            font-family: 'Quicksand', sans-serif;
-            min-height: 100vh;
-        }
-
-        .ocean-waves {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            height: 100px;
-            background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 20" xmlns="http://www.w3.org/2000/svg"><path fill="%232CD4D9" d="M0 10 C20 18 40 2 60 10 S100 18 100 10 V20 H0 Z"/></svg>');
-            animation: waves 10s infinite linear;
-            z-index: -1;
-        }
-
-        @keyframes waves {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-100px); }
+            background: linear-gradient(45deg, #E8F7F7 0%, #D1F2F2 100%);
+            font-family: 'Playfair Display', serif;
         }
 
         .header {
+            background: url('orchid-pattern.png');
+            padding: 40px;
             text-align: center;
-            padding: 4rem 2rem;
-            background: linear-gradient(160deg, 
-                var(--teal-primary) 0%, 
-                var(--teal-secondary) 100%
-            );
-            color: white;
-            clip-path: ellipse(130% 100% at 50% 0%);
+            border-bottom: 10px solid var(--teal);
         }
 
-        .title {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
-            text-shadow: 2px 2px 4px rgba(44, 212, 217, 0.3);
-        }
-
-        .day-card {
-            background: rgba(255, 255, 255, 0.9);
-            border: 2px solid var(--teal-primary);
+        .chess-board {
+            background: url('chess-bg.jpg');
+            padding: 30px;
             border-radius: 15px;
-            padding: 1.5rem;
-            margin: 1rem;
-            box-shadow: 0 4px 15px rgba(42, 157, 143, 0.1);
-            transition: all 0.3s ease;
+            margin: 20px auto;
+            width: 300px;
+            position: relative;
         }
 
-        .day-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(42, 157, 143, 0.2);
-        }
-
-        .teal-glow {
-            animation: glow 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes glow {
-            from { text-shadow: 0 0 10px var(--teal-primary); }
-            to { text-shadow: 0 0 20px var(--teal-primary); }
-        }
-
-        .bubble {
+        .lock {
             width: 50px;
-            height: 50px;
-            background: rgba(44, 212, 217, 0.3);
-            border-radius: 50%;
-            position: absolute;
-            animation: float 6s infinite;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0); opacity: 0; }
-            50% { transform: translateY(-100px); opacity: 1; }
-            100% { transform: translateY(-200px); opacity: 0; }
-        }
-
-        button {
-            background: var(--teal-secondary);
-            color: white;
-            padding: 12px 25px;
-            border: none;
-            border-radius: 25px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: transform 0.3s;
         }
 
-        button:hover {
-            background: var(--teal-primary);
-            transform: scale(1.05);
+        .lock:hover {
+            transform: scale(1.2);
         }
 
-        /* Add more custom styles below */
+        .day-box {
+            background: white;
+            border: 3px solid var(--teal);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px;
+            display: inline-block;
+            width: 100px;
+            text-align: center;
+            position: relative;
+        }
+
+        .day-box.locked {
+            background: repeating-linear-gradient(45deg, #F8F8F8, #F8F8F8 10px, #FFF 10px, #FFF 20px);
+        }
+
+        .dosa-animation {
+            width: 100px;
+            animation: flip 2s infinite;
+        }
+
+        @keyframes flip {
+            0% { transform: rotate(0deg); }
+            50% { transform: rotate(180deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .chocolate-rain {
+            position: fixed;
+            pointer-events: none;
+            z-index: -1;
+        }
     </style>
 </head>
 <body>
-    <div class="ocean-waves"></div>
-    
-    <!-- Animated bubbles -->
-    <div class="bubble" style="left:10%; animation-delay:0s"></div>
-    <div class="bubble" style="left:30%; animation-delay:1s"></div>
-    <div class="bubble" style="left:70%; animation-delay:2s"></div>
-
-    <div class="header">
-        <h1 class="title teal-glow">Our Teal Romance 🌸</h1>
-        <p>14 Days of Loving [Her Name]</p>
+    <!-- Chocolate Animation -->
+    <div class="chocolate-rain">
+        <img src="hershey-kiss.png" class="choco" style="left:10%">
+        <img src="silk-almond.png" class="choco" style="left:30%">
     </div>
 
-    <div class="container">
-        <!-- Day 1 Card -->
-        <div class="day-card">
-            <h3 style="color: var(--teal-dark);">Day 1: Ocean Memories 🌊</h3>
-            <p>Remember our beach walk where...</p>
-            <button onclick="revealMemory(1)">Relive This Moment</button>
-        </div>
+    <div class="header">
+        <h1>14 Days of Love & Surprises 💝</h1>
+        <img src="dosa-animation.gif" class="dosa-animation">
+    </div>
 
-        <!-- Day 2 Card -->
-        <div class="day-card">
-            <h3 style="color: var(--teal-dark);">Day 2: Teal Surprise 💎</h3>
-            <p>A special gift awaits...</p>
-            <button onclick="revealMemory(2)">Uncover Secret</button>
+    <!-- Chess Lock -->
+    <div class="chess-board">
+        <img src="padlock.png" class="lock" onclick="unlockChess()">
+        <div id="chessQuestion" style="display:none;">
+            <p>What's the secret code from our first date?</p>
+            <input type="text" id="chessAnswer">
+            <button onclick="checkChessAnswer()">Unlock</button>
         </div>
+    </div>
 
-        <!-- Add more days following same pattern -->
+    <!-- 14 Day Boxes -->
+    <div id="dayContainer">
+        <!-- Generated by JavaScript -->
     </div>
 
     <script>
-        // Bubble animation
-        function createBubbles() {
-            const container = document.body;
-            for(let i=0; i<10; i++) {
-                const bubble = document.createElement('div');
-                bubble.className = 'bubble';
-                bubble.style.left = Math.random() * 100 + '%';
-                bubble.style.animationDelay = Math.random() * 3 + 's';
-                container.appendChild(bubble);
+        // Chocolate Animation
+        function createChocolateRain() {
+            const container = document.querySelector('.chocolate-rain');
+            for(let i=0; i<20; i++) {
+                const img = document.createElement('img');
+                img.src = i%2 ? 'hershey-kiss.png' : 'silk-almond.png';
+                img.style.position = 'absolute';
+                img.style.left = Math.random()*100 + '%';
+                img.style.animation = `fall ${Math.random()*3+3}s linear infinite`;
+                container.appendChild(img);
             }
         }
-        createBubbles();
 
-        // Interactive memories
-        function revealMemory(day) {
-            const memories = {
-                1: {
-                    title: "Our Beach Walk",
-                    content: "That sunset when you...",
-                    media: "beach-memory.jpg"
-                },
-                2: {
-                    title: "Hidden Message",
-                    content: "You make me feel like...",
-                    media: "surprise-gift.mp4"
-                }
-            };
-            
-            const memory = memories[day];
-            Swal.fire({
-                title: memory.title,
-                html: `<p>${memory.content}</p>
-                      ${memory.media.endsWith('.mp4') ? 
-                        `<video controls src="${memory.media}" style="width:100%"></video>` : 
-                        `<img src="${memory.media}" style="width:100%">`}`,
-                background: 'var(--teal-light)',
-                confirmButtonColor: 'var(--teal-secondary)'
-            });
+        // 14 Days Setup
+        const surprises = {
+            1: {type: 'video', content: 'day1-surprise.mp4', locked: false},
+            2: {type: 'game', content: 'memory-game.html', locked: true},
+            // ... Add all 14 days
+        };
+
+        function generateDayBoxes() {
+            let html = '';
+            for(let day=1; day<=14; day++) {
+                html += `
+                    <div class="day-box ${surprises[day].locked ? 'locked' : ''}" 
+                         onclick="unlockDay(${day})">
+                        Day ${day}
+                        ${day === 7 ? '<img src="rose-icon.png" style="width:30px">' : ''}
+                    </div>
+                `;
+            }
+            document.getElementById('dayContainer').innerHTML = html;
         }
+
+        // Chess Lock Puzzle
+        function unlockChess() {
+            document.getElementById('chessQuestion').style.display = 'block';
+        }
+
+        function checkChessAnswer() {
+            const answer = document.getElementById('chessAnswer').value;
+            if(answer === "DOSA-LOVE") { // Set your secret answer
+                Swal.fire({
+                    title: 'Lock Opened! 🎉',
+                    html: '<img src="blue-orchid.gif" style="width:200px"><p>Your surprise: ...</p>',
+                    confirmButtonColor: var(--teal)
+                });
+            }
+        }
+
+        // Initialize
+        createChocolateRain();
+        generateDayBoxes();
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>14 Magical Days for My Queen 👑</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Dancing+Script&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --teal: #2CD4D9;
+            --rose-gold: #E0BFB8;
+            --choco: #6B4423;
+        }
+
+        body {
+            background: linear-gradient(45deg, #E8F7F7 0%, #D1F2F2 100%);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .header {
+            background: url('orchid-pattern.png');
+            padding: 40px;
+            text-align: center;
+            border-bottom: 10px solid var(--teal);
+        }
+
+        .chess-board {
+            background: url('chess-bg.jpg');
+            padding: 30px;
+            border-radius: 15px;
+            margin: 20px auto;
+            width: 300px;
+            position: relative;
+        }
+
+        .lock {
+            width: 50px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .lock:hover {
+            transform: scale(1.2);
+        }
+
+        .day-box {
+            background: white;
+            border: 3px solid var(--teal);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px;
+            display: inline-block;
+            width: 100px;
+            text-align: center;
+            position: relative;
+        }
+
+        .day-box.locked {
+            background: repeating-linear-gradient(45deg, #F8F8F8, #F8F8F8 10px, #FFF 10px, #FFF 20px);
+        }
+
+        .dosa-animation {
+            width: 100px;
+            animation: flip 2s infinite;
+        }
+
+        @keyframes flip {
+            0% { transform: rotate(0deg); }
+            50% { transform: rotate(180deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .chocolate-rain {
+            position: fixed;
+            pointer-events: none;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Chocolate Animation -->
+    <div class="chocolate-rain">
+        <img src="hershey-kiss.png" class="choco" style="left:10%">
+        <img src="silk-almond.png" class="choco" style="left:30%">
+    </div>
+
+    <div class="header">
+        <h1>14 Days of Love & Surprises 💝</h1>
+        <img src="dosa-animation.gif" class="dosa-animation">
+    </div>
+
+    <!-- Chess Lock -->
+    <div class="chess-board">
+        <img src="padlock.png" class="lock" onclick="unlockChess()">
+        <div id="chessQuestion" style="display:none;">
+            <p>What's the secret code from our first date?</p>
+            <input type="text" id="chessAnswer">
+            <button onclick="checkChessAnswer()">Unlock</button>
+        </div>
+    </div>
+
+    <!-- 14 Day Boxes -->
+    <div id="dayContainer">
+        <!-- Generated by JavaScript -->
+    </div>
+
+    <script>
+        // Chocolate Animation
+        function createChocolateRain() {
+            const container = document.querySelector('.chocolate-rain');
+            for(let i=0; i<20; i++) {
+                const img = document.createElement('img');
+                img.src = i%2 ? 'hershey-kiss.png' : 'silk-almond.png';
+                img.style.position = 'absolute';
+                img.style.left = Math.random()*100 + '%';
+                img.style.animation = `fall ${Math.random()*3+3}s linear infinite`;
+                container.appendChild(img);
+            }
+        }
+
+        // 14 Days Setup
+        const surprises = {
+            1: {type: 'video', content: 'day1-surprise.mp4', locked: false},
+            2: {type: 'game', content: 'memory-game.html', locked: true},
+            // ... Add all 14 days
+        };
+
+        function generateDayBoxes() {
+            let html = '';
+            for(let day=1; day<=14; day++) {
+                html += `
+                    <div class="day-box ${surprises[day].locked ? 'locked' : ''}" 
+                         onclick="unlockDay(${day})">
+                        Day ${day}
+                        ${day === 7 ? '<img src="rose-icon.png" style="width:30px">' : ''}
+                    </div>
+                `;
+            }
+            document.getElementById('dayContainer').innerHTML = html;
+        }
+
+        // Chess Lock Puzzle
+        function unlockChess() {
+            document.getElementById('chessQuestion').style.display = 'block';
+        }
+
+        function checkChessAnswer() {
+            const answer = document.getElementById('chessAnswer').value;
+            if(answer === "DOSA-LOVE") { // Set your secret answer
+                Swal.fire({
+                    title: 'Lock Opened! 🎉',
+                    html: '<img src="blue-orchid.gif" style="width:200px"><p>Your surprise: ...</p>',
+                    confirmButtonColor: var(--teal)
+                });
+            }
+        }
+
+        // Initialize
+        createChocolateRain();
+        generateDayBoxes();
     </script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
