@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Never Ending Love Story ❤</title>
     <style>
         body {
@@ -71,8 +72,6 @@
             border-radius: 5px;
             cursor: pointer;
         }
-
-        /* Add more custom styles below */
     </style>
 </head>
 <body>
@@ -85,13 +84,12 @@
     <div class="container">
         <div class="love-note">
             <h2>To My Most Special Person...</h2>
-            <p>Bobi, I know we had a lot of fights, like really huge fights, I was being a stupid boyfriend , forgetting his duties. But you have no idea of how much I have love for you. I am gonna show from now onwards , how much I love, care , respect and support you. I am going to throw my bad habits away. 🐣🐥</p>
+            <p>Bobi, I know we had a lot of fights, like really huge fights, I was being a stupid boyfriend, forgetting his duties. But you have no idea how much love I have for you. I am gonna show from now onwards how much I love, care, respect, and support you. I am going to throw my bad habits away. 🐣🐥</p>
         </div>
 
         <div class="photo-gallery">
             <img src="your-photo1.jpg" alt="Our Photo 1">
             <img src="your-photo2.jpg" alt="Our Photo 2">
-            <!-- Add more photos -->
         </div>
 
         <div class="timeline">
@@ -99,36 +97,50 @@
             <div class="timeline-item">
                 <h3>First Meeting ❤️</h3>
                 <p>Date: 16 April, 2023</p>
-                <p>Jab tujhse pehli baar baat kri thi aisa laga tha ki hum pehle bhi mile ho, it was awesome . Pta nhi tu kya kr rhi thi omegle pe , shayad mujhe hi dhundhne nikli hogi . Mujhe nhi maalum tha ki ek din omegle chlane se meri life mai itna bada twist ajayga. Aakhirkaar pyar toh ek se hi hota hai toh mene omegle wali ladki se kar lia. Jab pehli baat hui hamaare beech mai mera dil kehne laga ki isse baat krna band mt kr , karta hi ja . Dil kehta tha kuch bhi share kar ise , literally jis tarah se mai tujhse baat krta tha roast krta tha , hum alag hi the. Haa tu bhi mujhe roast krti thi lekin vo kam pd jata tha hehe...kyonki mai toh hu hi besharam</p>
+                <p>Jab tujhse pehli baar baat kri thi aisa laga tha ki hum pehle bhi mile ho, it was awesome. Pta nhi tu kya kr rhi thi omegle pe, shayad mujhe hi dhundhne nikli hogi. Mujhe nhi maalum tha ki ek din omegle chlane se meri life mai itna bada twist ajayga. Aakhirkaar pyar toh ek se hi hota hai toh mene omegle wali ladki se kar lia.</p>
             </div>
-            <!-- Add more timeline items -->
         </div>
 
         <div class="love-note">
             <h2>Hmaara pyar 💗</h2>
-            <p>Bhagwaan bhi nhi bcha paate tujhe mujhse agar hum ldr mai nhi hote, mai tujhe ghumaane lejata . Tujhe apne hathon se khana khilata , tere se chipak kr rehta , jaha bhi hum jaate hmare hathon mai hath hote , sab kuch theek hota, hum ek dusre ko or jaante .....vaise tujhe ek dil ki baat btau toh jo meri gaand jalti hai jab tu kisi ladke ka naam mention karti hai hmare convo mai 🔥....bhot insecure jo hu lekin mujhe bhrosa hai tujhpe. I dont want us to sing "milke bhi hum na mile"...pyar hai , pyar milayga hume. Jo maine galtiyan kri hai unko bhula toh nhi sakti tu lekin agar maaf nhi kr paai toh ye rishta aage nhi chl payga, aap dekhna aage se mai kya krta hu mai sab kuch thik krdunga. Vaise bhi I was your therapist in December,2023 . Now I am ashamed as I am the reason behind your visits to the therapist. Zindagi bhi chiz hai , kal hum kya the aaj kya ban gye hai. Chlo bhagwaan ne mujhe sabse cute biwi di hai toh ab se toh mai uska dhyaan rkhunga na ,haa bhai teri hi baat ho rhi hai tu hi biwi hai meri , meri jaaan , acha mana kyo kr rhi hai ? ohhhh chl koi baat nhi bana lunga mai tujhe apni biwi..... kaash ye ldr na hota bas na hota  </p>
+            <p>Bhagwaan bhi nhi bcha paate tujhe mujhse agar hum LDR mai nhi hote. Mai tujhe ghumaane lejata, tujhe apne hathon se khana khilata, tere se chipak kr rehta. Tujhe ek dil ki baat btau toh jo meri gaand jalti hai jab tu kisi ladke ka naam mention karti hai hmare convo mai 🔥... bhot insecure jo hu lekin mujhe bhrosa hai tujhpe. I don't want us to sing "milke bhi hum na mile"...pyar hai, pyar milayga hume.</p>
         </div>
 
         <div class="love-counter">
             <h2>We've Been Together For:</h2>
             <p id="counter">Loading...</p>
-            <button onclick="showLove()">Click for Surprise!</button>
+            <button onclick="showSurprise()">Click for Surprise!</button>
         </div>
     </div>
 
     <script>
-        // Calculate days since relationship start
-        const startDate = new Date('2024-03-19'); // Add your start date
+        const startDate = new Date('2024-03-19');
         const today = new Date();
         const diffTime = Math.abs(today - startDate);
         const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
         document.getElementById('counter').innerHTML = `${diffDays} Days!`;
 
-        function showLove() {
-            alert("I love you more every day! 💖");
-        }
+        let surpriseIndex = 0;
+        const questions = [
+            { question: "What is your favorite color?", answer: "teal blue", video: "surprise1.mp4" },
+            { question: "What is your boyfriend's height?", answer: "5'7", video: "surprise2.mp4" },
+            { question: "What is your boyfriend's favorite color?", answer: "black", video: "surprise3.mp4" }
+        ];
 
-        // Add more interactive features here
+        function showSurprise() {
+            if (surpriseIndex >= questions.length) {
+                alert("No more surprises left! 💖");
+                return;
+            }
+            
+            let userAnswer = prompt(questions[surpriseIndex].question);
+            if (userAnswer && userAnswer.toLowerCase() === questions[surpriseIndex].answer.toLowerCase()) {
+                window.open(questions[surpriseIndex].video, "_blank");
+                surpriseIndex++;
+            } else {
+                alert("Oops! Wrong answer. Try again! 💕");
+            }
+        }
     </script>
 </body>
 </html>
