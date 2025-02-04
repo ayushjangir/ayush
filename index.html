@@ -72,6 +72,44 @@
             border-radius: 5px;
             cursor: pointer;
         }
+
+        .locked-pictures {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .locked-image {
+            position: relative;
+            filter: blur(5px);
+            transition: 0.3s;
+        }
+
+        .locked-image.unlocked {
+            filter: none;
+        }
+
+        .lock-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2em;
+            color: #ff3385;
+        }
+
+        .career-section {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 0 10px rgba(255, 51, 133, 0.3);
+        }
+
+        .pilot-surprise-section {
+            margin: 30px 0;
+        }
     </style>
 </head>
 <body>
@@ -87,6 +125,35 @@
             <p>Bobi, I know we had a lot of fights, like really huge fights, I was being a stupid boyfriend, forgetting his duties. But you have no idea how much love I have for you. I am gonna show from now onwards how much I love, care, respect, and support you. I am going to throw my bad habits away. 🐣🐥</p>
         </div>
 
+        <!-- New Career Section -->
+        <div class="career-section">
+            <h2>✈️ Flight Path to Glory ✈️</h2>
+            <p>My love, watching you evolve into a pilot has been my greatest joy. Every late-night study session, every simulator practice, every aviation manual you've mastered - they're not just career milestones, but testaments to your incredible determination. Soon you'll be commanding the skies, and I'll be your eternal co-pilot in this journey called life. When you finally announce "This is your captain speaking", know that I'll be grinning like a fool in seat 1A, bursting with pride. Your wings were meant to soar, and I'll always be here to celebrate every altitude you conquer. The sky isn't the limit for you - it's just the beginning of our airborne adventures together. 🛫💕</p>
+        </div>
+
+        <!-- New Pilot Surprise Section -->
+        <div class="love-note">
+            <h2>🔐 Pilot's Secret Gallery 🔐</h2>
+            <p>Unlock these aviation memories by answering our personal questions:</p>
+            
+            <div class="locked-pictures">
+                <div class="locked-image" id="pilotPic1">
+                    <div class="lock-icon">🔒</div>
+                    <img src="pilot1.jpg" alt="Aviation Memory 1" style="width:100%">
+                </div>
+                <div class="locked-image" id="pilotPic2">
+                    <div class="lock-icon">🔒</div>
+                    <img src="pilot2.jpg" alt="Aviation Memory 2" style="width:100%">
+                </div>
+                <div class="locked-image" id="pilotPic3">
+                    <div class="lock-icon">🔒</div>
+                    <img src="pilot3.jpg" alt="Aviation Memory 3" style="width:100%">
+                </div>
+            </div>
+            <button onclick="unlockPilotSurprise()" style="margin-top:15px;">✈️ Click to Unlock Pilot Memories!</button>
+        </div>
+
+        <!-- Existing Content Below -->
         <div class="photo-gallery">
             <img src="your-photo1.jpg" alt="Our Photo 1">
             <img src="your-photo2.jpg" alt="Our Photo 2">
@@ -114,31 +181,88 @@
     </div>
 
     <script>
+        // Original Date Counter
         const startDate = new Date('2024-03-19');
         const today = new Date();
         const diffTime = Math.abs(today - startDate);
         const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
         document.getElementById('counter').innerHTML = `${diffDays} Days!`;
 
+        // Original Surprise System
         let surpriseIndex = 0;
         const questions = [
-            { question: "What is your favorite color?", answer: "teal blue", video: "surprise1.mp4" },
-            { question: "What is your boyfriend's height?", answer: "5'7", video: "surprise2.mp4" },
-            { question: "What is your boyfriend's favorite color?", answer: "black", video: "surprise3.mp4" }
+            { 
+                question: "What's our secret midnight snack?", 
+                answer: "maggi", 
+                unlocks: "pic1"
+            },
+            { 
+                question: "Where did we first virtual date?", 
+                answer: "discord", 
+                unlocks: "pic2"
+            },
+            { 
+                question: "What's my pet name for you?", 
+                answer: "bobi", 
+                unlocks: "pic3"
+            }
         ];
 
         function showSurprise() {
             if (surpriseIndex >= questions.length) {
-                alert("No more surprises left! 💖");
+                alert("All memories unlocked! 💖");
                 return;
             }
             
             let userAnswer = prompt(questions[surpriseIndex].question);
             if (userAnswer && userAnswer.toLowerCase() === questions[surpriseIndex].answer.toLowerCase()) {
-                window.open(questions[surpriseIndex].video, "_blank");
+                const lockedDiv = document.getElementById(questions[surpriseIndex].unlocks);
+                lockedDiv.classList.add('unlocked');
+                lockedDiv.querySelector('.lock-icon').remove();
                 surpriseIndex++;
             } else {
-                alert("Oops! Wrong answer. Try again! 💕");
+                alert("Try again! ❤️");
+            }
+        }
+
+        // New Pilot Surprise System
+        let pilotSurpriseIndex = 0;
+        const pilotQuestions = [
+            { 
+                question: "What's is your name?", 
+                answer: "vasupadu", 
+                unlocks: "pilotPic1"
+            },
+            { 
+                question: "what is my phone number?", 
+                answer: "7888558228", 
+                unlocks: "pilotPic2"
+            },
+            { 
+                question: "What's my pilot nickname for you?", 
+                answer: "captain", 
+                unlocks: "pilotPic3"
+            }
+        ];
+
+        function unlockPilotSurprise() {
+            if (pilotSurpriseIndex >= pilotQuestions.length) {
+                alert("All aviation memories unlocked! ✈️❤️");
+                return;
+            }
+            
+            let userAnswer = prompt(`Aviation Memory ${pilotSurpriseIndex+1}/3\n${pilotQuestions[pilotSurpriseIndex].question}`);
+            if (userAnswer && userAnswer.toLowerCase() === pilotQuestions[pilotSurpriseIndex].answer.toLowerCase()) {
+                const lockedDiv = document.getElementById(pilotQuestions[pilotSurpriseIndex].unlocks);
+                lockedDiv.classList.add('unlocked');
+                lockedDiv.querySelector('.lock-icon').remove();
+                pilotSurpriseIndex++;
+                
+                if(pilotSurpriseIndex === 3) {
+                    alert("Full surprise unlocked! Check your email for virtual flight tickets! 🎟️");
+                }
+            } else {
+                alert("Authentication failed! Try again ❤️");
             }
         }
     </script>
